@@ -38,7 +38,11 @@ class GossipsController < ApplicationController
     end
   end
 
+  # Méthode qui permet de supprimer le gossip 
   def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to root_path
   end
 
 end
