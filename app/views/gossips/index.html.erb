@@ -17,6 +17,8 @@
 
             <%= link_to "Edit Gossip", edit_user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-secondary" %>
 
+            <%= link_to "Delete Gossip", user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
         </div>
     </div>
 <% end %>
