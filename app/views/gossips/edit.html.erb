@@ -1,2 +1,6 @@
-<h1>Gossips#edit</h1>
-<p>Find me in app/views/gossips/edit.html.erb</p>
+<%= form_with url: user_gossip_path, method: :put do |form| %>
+  <%= form.text_field :title %>
+  <%= form.text_field :content %>
+  <%= form.submit %>
+<% end %>
+
