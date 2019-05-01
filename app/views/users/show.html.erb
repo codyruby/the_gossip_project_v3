@@ -15,5 +15,7 @@
         <p class="card-text"><%= @user.age %></p>  
         <h5 class="card-title">City:</h5>
         <p class="card-text"><%= @city.name %></p>
+        <!-- Liens vers la page City qui dépend du user -->
+        <%= link_to "Go to the City Page", city_path(id: @city.id), :class => "btn btn-primary" %><br /><br />
       </div>
     </div>
