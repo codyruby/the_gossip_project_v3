@@ -6,9 +6,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/journal/bootstrap.min.css">  
   </head>
 
   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <%= link_to "TEAM", team_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "CONTACT", contact_path, class: "nav-link" %>
+                </li>
+              </ul>
+            </div>
+          </nav>
     <%= yield %>
   </body>
 </html>
