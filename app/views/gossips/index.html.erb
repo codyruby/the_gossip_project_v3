@@ -13,8 +13,6 @@
 <!-- Liens vers les différentes pages qui dépendent du gossip -->
             <%= link_to "Go to this Gossip Page", user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-primary"%>
 
-            <%= link_to "Go to this User Page", user_path(id: gossip.user_id), :class => "btn btn-primary" %>
-
         </div>
     </div>
 <% end %>
