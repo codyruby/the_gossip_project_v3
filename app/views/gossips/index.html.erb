@@ -4,7 +4,7 @@
 <!-- Boucle qui parcours tous les gossips -->
 <% @gossips.each do |gossip|%>
 <!-- Affichage des information de chaques gossips -->
-    <div class="card" style="width: 18rem;">
+    <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">AUTHOR : 
             <%= @users.find(gossip.user_id).first_name %></h5>
