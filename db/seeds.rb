@@ -15,13 +15,6 @@ require 'faker'
 #     c = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
 # end
 
-# users = User.all
-# users.each_with_index do |city, index|
-#     user = users.find(index + 1)
-#     user.city_id = index + 1
-#     user.save
-# end
-
-# 20.times do 
-#     g = Gossip.create!(title: Faker::Lorem.word, content: Faker::Lorem.paragraph, user_id: Faker::Number.between(1, 10))
+# 10.times do 
+#     g = Gossip.create!(title: Faker::Lorem.characters(10), content: Faker::Movies::StarWars.wookiee_sentence, user_id: Faker::Number.between(1, 10))
 # end
