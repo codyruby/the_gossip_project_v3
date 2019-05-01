@@ -9,7 +9,10 @@
     <%= @gossip.title %></h3>
     <h5 class="card-title">Content:</h5>
     <p class="card-text"><%= @gossip.content %></p>
-    <h5 class="card-title">Date:</h5>
-    <p class="card-text"><%= @gossip.created_at %></p>
+    <h5 class="card-title">Author:</h5>
+    <p class="card-text"><%= @user.first_name + " " + @user.last_name.upcase %></p>
+    <h5 class="card-title">City:</h5>
+    <p class="card-text"><%= @city.name %></p> 
   </div>
+  <%= link_to "Go to this User Page", user_path(id: params[:user_id]), :class => "btn btn-primary" %>
 </div>
