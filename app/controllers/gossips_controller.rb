@@ -6,6 +6,8 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
+    @user = User.find(params[:user_id])
+    @city = City.find(@user.city_id)
   end
 
   def new
