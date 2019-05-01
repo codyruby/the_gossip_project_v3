@@ -15,4 +15,6 @@
     <p class="card-text"><%= @city.name %></p> 
   </div>
   <%= link_to "Go to this User Page", user_path(id: params[:user_id]), :class => "btn btn-primary" %>
+  <%= link_to "Delete Gossip", user_gossip_path(@gossip.user_id, @gossip.id), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
 </div>
