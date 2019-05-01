@@ -1,2 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- Titre de la vue d'un user -->
+<h1>User Page</h1>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">First name:</h5>
+        <p class="card-text"><%= @user.first_name %></p>
+        <h5 class="card-title">Last name:</h5>
+        <p class="card-text"><%= @user.last_name %></p>
+        <h5 class="card-title">Description:</h5>
+        <p class="card-text"><%= @user.description %></p>
+        <h5 class="card-title">E-mail:</h5>
+        <p class="card-text"><%= @user.email %></p>
+        <h5 class="card-title">Age:</h5>
+        <p class="card-text"><%= @user.age %></p>  
+      </div>
+    </div>
