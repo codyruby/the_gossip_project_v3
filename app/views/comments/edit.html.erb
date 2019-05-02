@@ -1,6 +1,6 @@
 <h1>EDIT COMMENT :</h1>
 
-<%= form_with url: user_gossip_comment_path, method: :put do |form| %>
+<%= form_with url: user_gossip_comment_path(user_id:params[:user_id], gossip_id: params[:gossip_id], id: params[:id]), method: :put do |form| %>
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Content : 
