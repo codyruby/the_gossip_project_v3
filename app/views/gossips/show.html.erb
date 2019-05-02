@@ -18,3 +18,30 @@
   <%= link_to "Delete Gossip", user_gossip_path(@gossip.user_id, @gossip.id), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 
 </div>
+
+<div class="card" style="width: 18rem;">
+<h4>ADD COMMENT GOSSIP :</h4>
+
+<%= form_with url: user_gossip_comments_path(user_id: params[:user_id], gossip_id: params[:id]), method: :post do |form| %>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Content : 
+            <%= form.text_field :content %>
+            <p><%= form.submit %></p>
+        </div>
+    </div>
+<% end %>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <% @comments_by_gossip_id.each do |comment_number|%>
+    <!-- Affichage du contenu de chaques commentaires -->
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Comment :</h5>
+                <%= @comments.find(comment_number).content %>
+                <%= link_to "Edit Comment", edit_user_gossip_comment_path(user_id: params[:user_id], gossip_id: params[:id]), :class => "btn btn-secondary" %>
+            </div>
+        </div>
+    <% end %>
+</div>
