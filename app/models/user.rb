@@ -7,4 +7,5 @@ class User < ApplicationRecord
     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
     belongs_to :city
     has_many :gossips
+    has_many :comments
 end
