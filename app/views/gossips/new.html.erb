@@ -1,7 +1,13 @@
+<h1>NEW GOSSIP :</h1>
+
 <%= form_with url: user_gossips_path do |form| %>
-  <%= form.text_field :title %>
-  <%= form.text_field :content %>
-  <%= form.submit %>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Title : 
+            <%= form.text_field :title %>
+            <h5 class="card-title">Content : 
+            <%= form.text_field :content %>
+            <p><%= form.submit %></p>
+        </div>
+    </div>
 <% end %>
-
-
