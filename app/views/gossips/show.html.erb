@@ -40,7 +40,8 @@
             <div class="card-body">
                 <h5 class="card-title">Comment :</h5>
                 <%= @comments.find(comment_number).content %>
-                <%= link_to "Edit Comment", edit_user_gossip_comment_path(user_id: params[:user_id], gossip_id: params[:id]), :class => "btn btn-secondary" %>
+                <%= link_to "Edit Comment", edit_user_gossip_comment_path(user_id: params[:user_id], gossip_id: params[:id], id: comment_number), :class => "btn btn-secondary" %>
+                <%= link_to "Delete Gossip", user_gossip_comment_path(user_id: params[:user_id], gossip_id: params[:id], id: comment_number), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
         </div>
     <% end %>
