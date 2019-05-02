@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    p @comment
   end
 
   def update
@@ -33,6 +34,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
+   # Méthode qui permet de supprimer le commentaire 
+   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_gossip_path(user_id: params[:user_id], id: params[:gossip_id])
   end
 end
