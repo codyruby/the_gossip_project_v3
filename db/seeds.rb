@@ -8,13 +8,17 @@
 require 'faker'
 
 # 10.times do 
-#     u = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(12, 99), city_id: Faker::Number.between(1, 10))
+#     User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(12, 99), city_id: Faker::Number.between(1, 10))
 # end
 
 # 10.times do 
-#     c = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
+#     City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
 # end
 
 # 10.times do 
-#     g = Gossip.create!(title: Faker::Lorem.characters(10), content: Faker::Movies::StarWars.wookiee_sentence, user_id: Faker::Number.between(1, 10))
+#     Gossip.create!(title: Faker::Lorem.characters(10), content: Faker::Movies::StarWars.wookiee_sentence, user_id: Faker::Number.between(1, 10))
+# end
+
+# 10.times do 
+#     Comment.create!(gossip_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), content: Faker::Movies::StarWars.wookiee_sentence)
 # end
