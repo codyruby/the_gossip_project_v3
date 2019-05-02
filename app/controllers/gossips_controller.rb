@@ -8,6 +8,9 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     @user = User.find(params[:user_id])
     @city = City.find(@user.city_id)
+    # @comments = Comment.select { |comment| comment.gossip_id==params[:id]}
+    @comments = Comment.all
+    @comments_by_gossip_id = @comments.where(gossip_id: params[:id]).ids
   end
 
    # Méthode qui permet de créer un nouveau gossip
