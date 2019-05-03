@@ -22,3 +22,7 @@ require 'faker'
 # 10.times do 
 #     Comment.create!(gossip_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), content: Faker::Movies::StarWars.wookiee_sentence)
 # end
+
+# 10.times do 
+#     Tag.create!(title: Faker::JapaneseMedia::DragonBall.character)
+# end
