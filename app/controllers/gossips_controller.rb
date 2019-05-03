@@ -43,16 +43,17 @@ class GossipsController < ApplicationController
   def update
     @gossip = Gossip.find(params[:id])
     
-    if @gossip.update(:title => params[:title], :content => params[:content]) 
+    # if @gossip.update(:title => params[:title], :content => params[:content], :tags_ids => params[:tags_ids]) 
+      if @gossip.update(gossip_params) 
 
-      Taggable.update(tag_id: params[:tag_id], gossip_id: @gossip.id)
+      # Taggable.update(tag_id: params[:tag_id], gossip_id: @gossip.id)
 
       redirect_to root_path
-    elsif Taggable.where(gossip_id: params[:id]).blank? == false
+    # elsif Taggable.where(gossip_id: params[:id]).blank? == false
        
-        Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
+    #     Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
   
-        redirect_to root_path
+    #     redirect_to root_path
     else
       render :edit
     end
@@ -63,6 +64,11 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to root_path
+  end
+
+  def gossip_params
+    # params.require(:gossip).permit(:title, :content, :taggables => [])
+    params.permit(:title, :content, :tag_ids => [])
   end
 
 end
