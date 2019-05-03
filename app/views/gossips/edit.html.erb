@@ -7,6 +7,9 @@
             <%= form.text_field :title, value: @gossip.title %>
             <h5 class="card-title">Content : 
             <%= form.text_area :content, value: @gossip.content %>
+            <div class="form-item">
+                    <%=select_tag :tag_id, options_from_collection_for_select(@tags, "id", "title"), include_blank: 'Tags'%>
+            </div>
             <p><%= form.submit %></p>
         </div>
     </div>
