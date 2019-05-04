@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user do |f| %>
       
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'form-control' %>
@@ -31,3 +31,12 @@
 
   </div>
 </div>
+
+<% if @user.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
