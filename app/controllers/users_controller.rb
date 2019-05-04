@@ -9,9 +9,17 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    # @user = User.create!(first_name: , last_name: , description: , email: , age: , city_id: )
+    if @gossip.save
+      
+    redirect_to root_path
+    else
+    render 'new'
+    end
   end
 
   def edit
