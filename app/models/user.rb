@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_secure_password
+
     validates :first_name, :last_name, :city_id, presence: true
     # Validation de l'email par une présence obligatoire et unique avec un format particulier
     validates :email,
