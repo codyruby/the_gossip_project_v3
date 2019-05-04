@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :cities
   
+  get '/profile', to: 'profiles#index'
   get '/team', to: 'teams#index'
   get '/contact', to: 'contacts#index'
   get 'welcome/:id', to: 'welcomes#index'
