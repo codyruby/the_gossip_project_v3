@@ -1,3 +1,4 @@
+
 class GossipsController < ApplicationController
   def index
     @gossips = Gossip.all
@@ -25,9 +26,9 @@ class GossipsController < ApplicationController
 
   # Méthode qui permet de créer un nouveau gossip avec les params récupéré dans le formulaire de la vue new de gossip
   def create
-    @gossip = Gossip.new(:user_id => params[:user_id], :title => params[:title], :content => params[:content])
+    @gossip = Gossip.new(gossip_params.merge(user_id: params[:user_id]))
     if @gossip.save
-      Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
+      # Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
     redirect_to root_path
     else
     render 'new'
@@ -38,6 +39,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     @tags = Tag.all
     @tags_title = @tags.map { |tag| tag.title}
+    @tags_check = @gossip.tags
   end
 
   def update
@@ -67,8 +69,8 @@ class GossipsController < ApplicationController
   end
 
   def gossip_params
-    # params.require(:gossip).permit(:title, :content, :taggables => [])
-    params.permit(:title, :content, :tag_ids => [])
+    params.require(:gossip).permit(:title, :content, :tag_ids => [])
+    # params.permit(:title, :content, :tag_ids => [])
   end
 
 end
