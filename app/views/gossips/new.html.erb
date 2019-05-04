@@ -1,16 +1,25 @@
 <h1>NEW GOSSIP :</h1>
 
-<%= form_with url: user_gossips_path do |form| %>
+<%= form_for @gossip, url: user_gossips_path(params[:user_id]), method: :post do |form| %>
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Title : 
             <%= form.text_field :title %>
             <h5 class="card-title">Content : 
             <%= form.text_field :content %>
-             <div class="form-item">
-                    <%=select_tag :tag_id, options_from_collection_for_select(@tags, "id", "title"), include_blank: 'Tags'%>
-            </div>
-            <p><%= form.submit %></p>
+            <div class="form-item">
+                <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :title, { checked: true}, {} %>
+            </div> 
+            <p><%= form.submit %></p> 
         </div>
     </div>
+<% end %>
+
+<% if @gossip.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
