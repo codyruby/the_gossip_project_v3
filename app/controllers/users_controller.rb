@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    # @user = User.create!(first_name: , last_name: , description: , email: , age: , city_id: )
-    if @gossip.save
+    @user = User.create(user_params)
+    if @user.save
       
     redirect_to root_path
     else
@@ -29,5 +29,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :description, :email, :age, :city_id, :password, :password_confirmation)
   end
 end
