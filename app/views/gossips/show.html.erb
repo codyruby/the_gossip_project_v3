@@ -14,6 +14,8 @@
     <h5 class="card-title">City:</h5>
     <p class="card-text"><%= @city.name %></p> 
   </div>
+
+  <%= link_to "Edit Gossip", edit_user_gossip_path(user_id: params[:user_id], id: params[:id]), :class => "btn btn-secondary" if current_user == @gossip.user %>
   <%= link_to "Go to this User Page", user_path(id: params[:user_id]), :class => "btn btn-primary" %>
   <%= link_to "Delete Gossip", user_gossip_path(@gossip.user_id, @gossip.id), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 
