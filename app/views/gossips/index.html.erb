@@ -11,12 +11,22 @@
             <p class="card-text"><%= gossip.title %></p>
 
 <!-- Liens vers les différentes pages qui dépendent du gossip -->
+
+       
             <%= link_to "Go to this Gossip Page", user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-primary"%>
             
             <%= link_to "New Gossip", new_user_gossip_path(user_id: gossip.user_id), :class => "btn btn-primary"%>
             
             <%= link_to "Edit Gossip", edit_user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-secondary" if current_user == gossip.user %>
            
+            <% if current_user%>
+                <% if like = is_like?(gossip) %>
+                    <a href="<%= user_gossip_like_path(user_id: current_user, gossip_id: gossip.id, id: like.id)  %>" role="button" data-method="delete"><i class="fas fa-heart"></i><span class="tooltiptext">Dislike</span></a>
+                <% else %>
+                    <a href="<%= user_gossip_likes_path(user_id: current_user, gossip_id: gossip.id) %>" role="button" data-method="create"><i class="btn btn-xs btn-default"></i><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+                <% end %>
+            <% end %>
+            <%= how_much_likes(gossip) %> 
         </div>
     </div>
 <% end %>
