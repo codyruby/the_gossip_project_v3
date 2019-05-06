@@ -14,9 +14,9 @@
             <%= link_to "Go to this Gossip Page", user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-primary"%>
             
             <%= link_to "New Gossip", new_user_gossip_path(user_id: gossip.user_id), :class => "btn btn-primary"%>
-
-            <%= link_to "Edit Gossip", edit_user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-secondary" %>
-
+            
+            <%= link_to "Edit Gossip", edit_user_gossip_path(gossip.user_id, gossip.id), :class => "btn btn-secondary" if current_user == gossip.user %>
+           
         </div>
     </div>
 <% end %>
