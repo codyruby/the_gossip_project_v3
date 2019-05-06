@@ -1,6 +1,7 @@
 
 class GossipsController < ApplicationController
-  # before_action :authenticate_user, only: [:index]
+  before_action :authenticate_user, only: [:new, :create, :show, :index, :update, :destroy]
+  before_action :user_is_author, only: [:edit, :update, :destroy]
 
   def index
     @gossips = Gossip.all
@@ -30,7 +31,7 @@ class GossipsController < ApplicationController
   def create
     @gossip = Gossip.new(gossip_params.merge(user_id: current_user.id))
     if @gossip.save
-      # Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
+    
     redirect_to root_path
     else
     render 'new'
@@ -46,18 +47,9 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-    
-    # if @gossip.update(:title => params[:title], :content => params[:content], :tags_ids => params[:tags_ids]) 
-      if @gossip.update(gossip_params) 
-
-      # Taggable.update(tag_id: params[:tag_id], gossip_id: @gossip.id)
+     if @gossip.update(gossip_params) 
 
       redirect_to root_path
-    # elsif Taggable.where(gossip_id: params[:id]).blank? == false
-       
-    #     Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
-  
-    #     redirect_to root_path
     else
       render :edit
     end
@@ -66,8 +58,11 @@ class GossipsController < ApplicationController
   # Méthode qui permet de supprimer le gossip 
   def destroy
     @gossip = Gossip.find(params[:id])
+    
     @gossip.destroy
+    
     redirect_to root_path
+
   end
 
   private
@@ -81,6 +76,13 @@ class GossipsController < ApplicationController
     unless current_user
       flash[:danger] = "Please log in."
       redirect_to new_session_path
+    end
+  end
+
+  def user_is_author
+    unless current_user == Gossip.find(params[:id]).user
+      flash[:not_author] = "Tu n'es pas l'auteur du potin"
+      redirect_to root_path
     end
   end
 
