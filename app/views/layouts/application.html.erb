@@ -29,6 +29,9 @@
                         <li class="nav-item">
                           <%= link_to "New User", new_user_path, :class => "btn btn-primary"%>
                         </li>
+                        <li class="nav-item">
+                          <%= link_to "New Gossip", new_user_gossip_path(user_id: current_user), :class => "btn btn-primary" if current_user %>
+                        </li>
                       </ul>
                     </div> 
 
