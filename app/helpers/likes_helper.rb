@@ -1,9 +1,9 @@
 module LikesHelper
     def is_like?(id_gossip)
         Like.find_by(gossip_id: id_gossip, user: current_user)
-      end
+    end
     
-      def how_much_likes(id_gossip)
+    def how_much_likes(id_gossip)
         Like.where(gossip_id: id_gossip).length
-      end
+    end
 end
