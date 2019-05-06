@@ -1,5 +1,7 @@
 
 class GossipsController < ApplicationController
+  # before_action :authenticate_user, only: [:index]
+
   def index
     @gossips = Gossip.all
     @users = User.all
@@ -26,7 +28,7 @@ class GossipsController < ApplicationController
 
   # Méthode qui permet de créer un nouveau gossip avec les params récupéré dans le formulaire de la vue new de gossip
   def create
-    @gossip = Gossip.new(gossip_params.merge(user_id: params[:user_id]))
+    @gossip = Gossip.new(gossip_params.merge(user_id: current_user.id))
     if @gossip.save
       # Taggable.create(tag_id: params[:tag_id], gossip_id: @gossip.id)
     redirect_to root_path
@@ -68,9 +70,18 @@ class GossipsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
   def gossip_params
     params.require(:gossip).permit(:title, :content, :tag_ids => [])
     # params.permit(:title, :content, :tag_ids => [])
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
   end
 
 end
