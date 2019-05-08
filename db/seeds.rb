@@ -11,9 +11,9 @@ require 'faker'
 #     User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(12, 99), city_id: Faker::Number.between(1, 10))
 # end
 
-# 10.times do 
-#     City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
-# end
+10.times do 
+    City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
+end
 
 # 10.times do 
 #     Gossip.create!(title: Faker::Lorem.characters(10), content: Faker::Movies::StarWars.wookiee_sentence, user_id: Faker::Number.between(1, 10))
@@ -23,6 +23,6 @@ require 'faker'
 #     Comment.create!(gossip_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), content: Faker::Movies::StarWars.wookiee_sentence)
 # end
 
-# 10.times do 
-#     Tag.create!(title: Faker::JapaneseMedia::DragonBall.character)
-# end
+10.times do 
+    Tag.create!(title: Faker::JapaneseMedia::DragonBall.character)
+end
